@@ -35,5 +35,13 @@
     "frontend"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "tmp": "^0.2.6",
+    "piscina": "^4.9.3",
+    "http-proxy-middleware": "^2.0.10",
+    "postcss": "^8.5.12",
+    "webpack": "^5.104.1",
+    "@babel/core": "^7.29.6"
+  }
 }
