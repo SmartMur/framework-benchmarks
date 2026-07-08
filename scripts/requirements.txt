@@ -25,7 +25,7 @@ websockets>=10.0
 
 # HTTP requests for DevTools API
 requests>=2.31.0
-urllib3>=1.26.0,<2.1.0
+urllib3>=2.7.0,<3.0
 
 # Code complexity analysis
 radon>=6.0.0
