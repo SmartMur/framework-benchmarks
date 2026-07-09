@@ -1,28 +1,31 @@
-import { Component, Input, AfterViewInit, ElementRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, AfterViewInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+
 import { WeatherData } from '../types/weather.types';
 import { ForecastItemComponent } from './forecast-item.component';
 
 @Component({
   selector: 'app-forecast',
-  standalone: true,
-  imports: [CommonModule, ForecastItemComponent],
+  imports: [ForecastItemComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
-    <section class="forecast-section" *ngIf="weatherData">
-      <h2 class="section-title">7-Day Forecast</h2>
-      <div class="forecast">
-        <div class="forecast__list" data-testid="forecast-list">
-          <app-forecast-item
-            *ngFor="let date of weatherData.daily.time; let i = index"
-            [daily]="weatherData.daily"
-            [index]="i"
-            [isActive]="activeForecastIndex === i"
-            (toggle)="onToggleForecast($event)"
-          ></app-forecast-item>
+    @if (weatherData) {
+      <section class="forecast-section">
+        <h2 class="section-title">7-Day Forecast</h2>
+        <div class="forecast">
+          <div class="forecast__list" data-testid="forecast-list">
+            @for (date of weatherData.daily.time; track date; let i = $index) {
+              <app-forecast-item
+                [daily]="weatherData.daily"
+                [index]="i"
+                [isActive]="activeForecastIndex === i"
+                (toggle)="onToggleForecast($event)"
+              ></app-forecast-item>
+            }
+          </div>
         </div>
-      </div>
-    </section>
-  `
+      </section>
+    }
+    `
 })
 export class ForecastComponent implements AfterViewInit {
   @Input() weatherData: WeatherData | null = null;

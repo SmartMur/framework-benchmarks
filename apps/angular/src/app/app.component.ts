@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -13,14 +13,13 @@ import { WeatherContentComponent } from './components/weather-content.component'
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
-    CommonModule,
     SearchFormComponent,
     LoadingStateComponent,
     ErrorStateComponent,
     WeatherContentComponent
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <header class="header">
       <div class="container">

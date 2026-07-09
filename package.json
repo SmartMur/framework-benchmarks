@@ -83,11 +83,10 @@
     "build:static": "python scripts/run/build.py -- --static-site",
     "transform": "python scripts/transform/benchmark_results.py --average --output-dir ./results "
   },
-  "dependencies": {},
   "devDependencies": {
-    "@angular-eslint/eslint-plugin": "^20.1.1",
-    "@angular-eslint/schematics": "^20.1.1",
-    "@angular-eslint/template-parser": "^20.1.1",
+    "@angular-eslint/eslint-plugin": "^22.0.0",
+    "@angular-eslint/schematics": "^22.0.0",
+    "@angular-eslint/template-parser": "^22.0.0",
     "@eslint/js": "^9.32.0",
     "@playwright/test": "^1.40.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
@@ -102,7 +101,7 @@
     "express": "^4.21.2",
     "gzip-size": "^7.0.0",
     "jsdom": "^26.1.0",
-    "lighthouse": "^12.8.1"
+    "lighthouse": "^13.4.0"
   },
   "keywords": [
     "weather",
@@ -114,5 +113,8 @@
     "svelte",
     "angular"
   ],
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "overrides": {
+    "@sentry/node": "10.64.0"
+  }
 }

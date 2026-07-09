@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
 import { WeatherData } from '../types/weather.types';
 import { CurrentWeatherComponent } from './current-weather.component';
 import { ForecastComponent } from './forecast.component';
 
 @Component({
   selector: 'app-weather-content',
-  standalone: true,
-  imports: [CommonModule, CurrentWeatherComponent, ForecastComponent],
+  imports: [CurrentWeatherComponent, ForecastComponent],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div
       class="weather-content"

@@ -1,15 +1,9 @@
 import { defineConfig } from 'vite';
+import preact from '@preact/preset-vite';
 
 export default defineConfig({
+  plugins: [preact({ babel: {} })],
   base: './',
-  esbuild: {
-    loader: 'jsx',
-    include: /src\/.*\.jsx?$/,
-    exclude: [],
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-    jsxInject: `import { h, Fragment } from 'preact'`
-  },
   optimizeDeps: {
     include: ['preact/hooks']
   },

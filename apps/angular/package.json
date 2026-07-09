@@ -10,24 +10,24 @@
     "test:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@angular/animations": "^17.0.0",
-    "@angular/common": "^17.0.0",
-    "@angular/compiler": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@angular/forms": "^17.0.0",
-    "@angular/platform-browser": "^17.0.0",
-    "@angular/platform-browser-dynamic": "^17.0.0",
-    "@angular/router": "^17.0.0",
+    "@angular/animations": "^22.0.5",
+    "@angular/common": "^22.0.5",
+    "@angular/compiler": "^22.0.5",
+    "@angular/core": "^22.0.5",
+    "@angular/forms": "^22.0.5",
+    "@angular/platform-browser": "^22.0.5",
+    "@angular/platform-browser-dynamic": "^22.0.5",
+    "@angular/router": "^22.0.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.0"
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.0.0",
-    "@angular/cli": "^17.0.0",
-    "@angular/compiler-cli": "^17.0.0",
+    "@angular-devkit/build-angular": "^22.0.5",
+    "@angular/cli": "^22.0.5",
+    "@angular/compiler-cli": "^22.0.5",
     "@playwright/test": "^1.40.0",
-    "typescript": "~5.2.0"
+    "typescript": "~6.0.3"
   },
   "keywords": [
     "weather",
@@ -42,6 +42,10 @@
     "http-proxy-middleware": "^2.0.10",
     "postcss": "^8.5.12",
     "webpack": "^5.104.1",
-    "@babel/core": "^7.29.6"
+    "@babel/core": "^7.29.6",
+    "vite": "7.3.6",
+    "esbuild": "^0.28.1",
+    "uuid": "^11.1.1",
+    "webpack-dev-server": "5.2.6"
   }
 }

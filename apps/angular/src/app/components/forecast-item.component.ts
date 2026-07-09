@@ -1,12 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+
 import { DailyWeather } from '../types/weather.types';
 import { WeatherUtils } from '../utils/weather.utils';
 
 @Component({
   selector: 'app-forecast-item',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [],
+  changeDetection: ChangeDetectionStrategy.Eager,
   template: `
     <div
       class="forecast-item"
@@ -32,46 +32,48 @@ import { WeatherUtils } from '../utils/weather.utils';
         </div>
       </div>
 
-      <div class="forecast-item__details" *ngIf="isActive">
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">Sunrise</div>
-          <div class="forecast-detail-item__value">
-            {{ formatTime(daily.sunrise[index]) }}
+      @if (isActive) {
+        <div class="forecast-item__details">
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">Sunrise</div>
+            <div class="forecast-detail-item__value">
+              {{ formatTime(daily.sunrise[index]) }}
+            </div>
+          </div>
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">Sunset</div>
+            <div class="forecast-detail-item__value">
+              {{ formatTime(daily.sunset[index]) }}
+            </div>
+          </div>
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">Rain</div>
+            <div class="forecast-detail-item__value">
+              {{ daily.rain_sum[index].toFixed(1) }} mm
+            </div>
+          </div>
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">UV Index</div>
+            <div class="forecast-detail-item__value">
+              {{ daily.uv_index_max[index].toFixed(1) }}
+            </div>
+          </div>
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">Precipitation</div>
+            <div class="forecast-detail-item__value">
+              {{ formatPercentage(daily.precipitation_probability_max[index]) }}
+            </div>
+          </div>
+          <div class="forecast-detail-item">
+            <div class="forecast-detail-item__label">Temperature</div>
+            <div class="forecast-detail-item__value">
+              {{ formatTemperature(getLow()) }} to {{ formatTemperature(getHigh()) }}
+            </div>
           </div>
         </div>
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">Sunset</div>
-          <div class="forecast-detail-item__value">
-            {{ formatTime(daily.sunset[index]) }}
-          </div>
-        </div>
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">Rain</div>
-          <div class="forecast-detail-item__value">
-            {{ daily.rain_sum[index].toFixed(1) }} mm
-          </div>
-        </div>
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">UV Index</div>
-          <div class="forecast-detail-item__value">
-            {{ daily.uv_index_max[index].toFixed(1) }}
-          </div>
-        </div>
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">Precipitation</div>
-          <div class="forecast-detail-item__value">
-            {{ formatPercentage(daily.precipitation_probability_max[index]) }}
-          </div>
-        </div>
-        <div class="forecast-detail-item">
-          <div class="forecast-detail-item__label">Temperature</div>
-          <div class="forecast-detail-item__value">
-            {{ formatTemperature(getLow()) }} to {{ formatTemperature(getHigh()) }}
-          </div>
-        </div>
-      </div>
+      }
     </div>
-  `
+    `
 })
 export class ForecastItemComponent {
   @Input() daily!: DailyWeather;
